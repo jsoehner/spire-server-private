@@ -1,0 +1,45 @@
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+dir = /home/jsoehner/spire-server-private/spire_setup/pki/root-spire-demo
+certs = $dir/certs
+crl_dir = $dir/crl
+new_certs_dir = $dir/newcerts
+database = $dir/index.txt
+serial = $dir/serial
+crlnumber = $dir/crlnumber
+private_key = $dir/private/ca.key.pem
+certificate = $dir/certs/ca.cert.pem
+default_md = sha256
+policy = policy_strict
+
+[ policy_strict ]
+countryName = supplied
+stateOrProvinceName = supplied
+localityName = optional
+organizationName = supplied
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+
+[ req ]
+distinguished_name = req_distinguished_name
+string_mask = utf8only
+default_md = sha256
+x509_extensions = v3_ca
+prompt = no
+
+[ req_distinguished_name ]
+
+[ v3_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, keyCertSign, cRLSign
+
+[ v3_intermediate_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true, pathlen:1
+keyUsage = critical, keyCertSign, cRLSign

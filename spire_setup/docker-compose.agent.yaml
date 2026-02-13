@@ -1,0 +1,15 @@
+services:
+  spire-agent:
+    image: ghcr.io/spiffe/spire-agent:1.14.1
+    restart: on-failure
+    depends_on:
+      - spire-server-1
+    volumes:
+      - ./agent/agent.conf:/opt/spire/conf/agent/agent.conf:ro
+      - ./agent/bootstrap.crt:/opt/spire/conf/agent/bootstrap.crt:ro
+      - ./persistence/agent:/opt/spire/data/agent
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["run", "-config", "/opt/spire/conf/agent/agent.conf"]
+    pid: "host"
+    networks:
+      spire_demo_net:

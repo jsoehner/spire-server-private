@@ -1,0 +1,71 @@
+services:
+  postgres:
+    image: mirror.gcr.io/chainguard/postgres:latest
+    environment:
+      POSTGRES_PASSWORD: spire
+      POSTGRES_USER: spire
+      POSTGRES_DB: spire
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spire -d spire -h 127.0.0.1 -p 5432"]
+      interval: 2s
+      timeout: 3s
+      retries: 60
+      start_period: 5s
+    networks:
+      spire_demo_net:
+        ipv4_address: 172.28.0.13
+
+  spire-server-1:
+    image: ghcr.io/spiffe/spire-server:1.14.1
+    volumes:
+      - ./server1/server.conf:/opt/spire/conf/server/server.conf:ro
+      - ./persistence/server1:/run/spire
+      - ./upstream:/opt/spire/conf/upstream:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      spire_demo_net:
+        ipv4_address: 172.28.0.11
+
+  spire-server-2:
+    image: ghcr.io/spiffe/spire-server:1.14.1
+    volumes:
+      - ./server2/server.conf:/opt/spire/conf/server/server.conf:ro
+      - ./persistence/server2:/run/spire
+      - ./upstream:/opt/spire/conf/upstream:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      spire_demo_net:
+        ipv4_address: 172.28.0.12
+
+  load-balancer:
+    image: mirror.gcr.io/chainguard/nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8081:8081"
+    depends_on:
+      - spire-server-1
+      - spire-server-2
+    networks:
+      spire_demo_net:
+        ipv4_address: 172.28.0.10
+
+volumes:
+  pgdata:
+
+networks:
+  spire_demo_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24

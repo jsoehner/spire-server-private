@@ -1,0 +1,1 @@
+V	310212201923Z		1000	unknown	/C=CA/ST=ON/L=Scarborough/O=Scotiabank/OU=PKI/CN=scotiabank.local SPIRE Upstream Intermediate CA
