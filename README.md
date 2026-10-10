@@ -92,3 +92,7 @@ spire-server-1-1  | time="2026-02-13T20:42:40Z" level=info msg="There is not a C
 spire-server-1-1  | time="2026-02-13T20:42:40Z" level=info msg="Journal loaded" jwt_keys=0 subsystem_name=ca_manager wit_keys=0 x509_cas=0
 spire-server-1-1  | time="2026-02-13T20:42:40Z" level=debug msg="Preparing X509 CA" slot=A subsystem_name=ca_manager
 spire-server-1-1  | time="2026-02-13T20:42:40Z" level=debug msg="There is no active X.509 authority yet. Can't save CA journal in the datastore" subsystem_name=ca_manager
+
+
+## 🛡️ Security & Cryptographic Posture
+This project tracks Software & Cryptographic Bill of Materials (SBOM & CBOM) and Post-Quantum Cryptography (PQC) readiness. See the latest [Cryptographic Audit & PQC Migration Report](docs/security/CRYPTOGRAPHIC_AUDIT.md).
