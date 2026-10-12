@@ -8,7 +8,7 @@
 |---|---|---|
 | **Post-Quantum Ready (PQC)** | **0** | 🟢 Quantum-Resistant (NIST FIPS 203/204/205) |
 | **Quantum-Vulnerable (Backlog)** | **0** | 🔴 At Risk of 'Harvest Now, Decrypt Later' |
-| **Classical Symmetric / Hashing** | **0** | 🟡 Classical Security (Requires AES-256 / SHA-256+) |
+| **Classical Symmetric / Digest** | **0** | 🟡 Classical Security (Requires AES-256 / SHA-256+) |
 | **Asymmetric PQC Migration Progress** | **N/A (0 detected)** | (No asymmetric primitives detected in current scope) |
 
 ### 🎯 Cryptographic Supply Chain Coverage & Confidence
@@ -17,17 +17,21 @@
 |---|---|---|
 | **First-Party Code (`src/`)** | **100% Audited** (0 Custom Primitives) | 🟢 **HIGH** (Direct AST & SAST verified clean) |
 | **Third-Party Supply Chain** | **0.0%** (0 of 6 dependencies cataloged) | 🔴 LOW (Known profiles assimilated) |
-| **Overall Audit Confidence Score** | **14.3%** | **🔴 LOW** (6 unassimilated supply chain dependencies) |
+| **Overall Audit Confidence Score** | **14.3%** | 🔴 LOW (6 unassimilated supply chain dependencies) |
 
-### ✅ Post-Quantum Cryptography Migrated Assets
+| **System OS Inventory** | **Pending Update** | 🟡 **Warning** (Local OS crypto components not yet inventoried) |
+
+### ✅ Post-Quantum Ready Assets
 
 > ⚠️ **No Post-Quantum Ready assets detected.** Immediate migration planning recommended for asymmetric key exchanges and digital signatures.
 
 ### ⚠️ Quantum-Vulnerable Assets & Remediation Plan
 
-> ℹ️ **No quantum-vulnerable asymmetric assets found.** No asymmetric cryptographic primitives were detected in current scope.
+> ℹ️ **No quantum-vulnerable asymmetric assets found.** Asymmetric cryptographic primitives were not detected in current scope.
 
 ### 🔒 Classical Symmetric & Digest Assets
+
+> ℹ️ **No classical symmetric assets detected.**
 
 ### ⚠️ Unassimilated Third-Party Binaries & Cryptographic Blind Spots
 
@@ -40,4 +44,4 @@
 | `actions/upload-artifact` | v4.6.2 | `pkg:github/actions/upload-artifact@v4.6.2` | 🟡 Unassimilated (No upstream CBOM) |
 | `anchore/sbom-action` | v0.24.2 | `pkg:github/anchore/sbom-action@v0.24.2` | 🟡 Unassimilated (No upstream CBOM) |
 | `cbomkit/cbomkit-action` | v2.3.0 | `pkg:github/cbomkit/cbomkit-action@v2.3.0` | 🟡 Unassimilated (No upstream CBOM) |
-| `/home/runner/work/spire-server-private/spire-server-private/.github/workflows/sbom.yml` | N/A | `N/A` | 🟡 Unassimilated (No upstream CBOM) |
+| `/home/runner/work/spire-server-private/spire-server-private/.github/workflows/sbom-cbom.yml` | N/A | `N/A` | 🟡 Unassimilated (No upstream CBOM) |
