@@ -38,7 +38,7 @@
 | Component Name | Primitive | Key Length | Quantum Resistance Assessment | Provenance / Location(s) |
 |---|---|---|---|---|
 | `SHA-256` | hash | 256 | Quantum-Resistant (Grover's proof) | First-Party Code (SAST/AST)<br>`pki.sh:152`<br>`pki.sh:167`<br>`pki.sh:218`<br>`pki.sh:253`<br>`pki.sh:258` |
-| `X.509-Certificate` | certificate | X.509 | Review key length for Grover resistance | First-Party Code (SAST/AST)<br>`spire_setup/agent/bootstrap.crt:1`<br>`spire_setup/agent/bootstrap.crt:35`<br>`spire_setup/upstream/chain.pem:1`<br>`spire_setup/upstream/chain.pem:35`<br>`spire_setup/upstream/root.cert.pem:1`<br>`spire_setup/upstream/intermediate.cert.pem:1`<br>`spire_setup/pki/intermediate-spire-demo/certs/chain.pem:1`<br>`spire_setup/pki/intermediate-spire-demo/certs/chain.pem:35`<br>`spire_setup/pki/intermediate-spire-demo/certs/intermediate.cert.pem:1`<br>`spire_setup/pki/root-spire-demo/newcerts/1000.pem:1`<br>`spire_setup/pki/root-spire-demo/certs/ca.cert.pem:1` |
+| `X.509-Certificate` | certificate | X.509 | Review key length for Grover resistance | First-Party Code (SAST/AST)<br>`spire_setup/upstream/intermediate.cert.pem:1`<br>`spire_setup/upstream/chain.pem:1`<br>`spire_setup/upstream/chain.pem:35`<br>`spire_setup/upstream/root.cert.pem:1`<br>`spire_setup/agent/bootstrap.crt:1`<br>`spire_setup/agent/bootstrap.crt:35`<br>`spire_setup/pki/intermediate-spire-demo/certs/intermediate.cert.pem:1`<br>`spire_setup/pki/intermediate-spire-demo/certs/chain.pem:1`<br>`spire_setup/pki/intermediate-spire-demo/certs/chain.pem:35`<br>`spire_setup/pki/root-spire-demo/certs/ca.cert.pem:1`<br>`spire_setup/pki/root-spire-demo/newcerts/1000.pem:1` |
 
 ### ⚛️ Post-Quantum Cryptography (PQC) Modernization Roadmap
 
